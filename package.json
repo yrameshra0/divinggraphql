@@ -1,0 +1,25 @@
+{
+  "name": "divinggraphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yrameshra0/divinggraphql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yrameshra0/divinggraphql/issues"
+  },
+  "homepage": "https://github.com/yrameshra0/divinggraphql#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "express-graphql": "^0.6.4",
+    "graphql": "^0.9.3",
+    "lodash": "^4.17.4"
+  }
+}
