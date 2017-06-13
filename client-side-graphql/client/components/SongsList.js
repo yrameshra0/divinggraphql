@@ -9,12 +9,20 @@ export class SongsList extends Component {
             return <div>LOADING ... </div>;
 
         return (
-            <ul>
-                {this.props.data.songs.map(song => {
-                    return <li id={song.id}>{song.title}</li>;
-                })}
+            <ul className="collection">
+                {this.renderSong()}
             </ul>
         );
+    }
+
+    renderSong() {
+        return this.props.data.songs.map(song => {
+            return (
+                <li id={song.id} className="collection-item">
+                    {song.title}
+                </li>
+            );
+        });
     }
 }
 
