@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Link, hashHistory} from 'react-router';
+
 import addSong from '../mutations/add-song';
 import {graphql} from 'react-apollo';
 class SongCreate extends Component {
@@ -11,6 +13,7 @@ class SongCreate extends Component {
     render() {
         return (
             <div>
+                <Link to="/">Back</Link>
                 <h3> Create a new song </h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>Song Title:</label>
@@ -30,7 +33,7 @@ class SongCreate extends Component {
             variables: {
                 title: this.state.title
             }
-        });
+        }).then(() => hashHistory.push('/'));
     };
 
 }

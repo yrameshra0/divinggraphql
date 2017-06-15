@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
+import {Link} from 'react-router';
+
 import songsQuery from '../queries/songs-query';
 
 export class SongsList extends Component {
@@ -9,16 +11,25 @@ export class SongsList extends Component {
             return <div>LOADING ... </div>;
 
         return (
-            <ul className="collection">
-                {this.renderSong()}
-            </ul>
+            <div>
+                <ul className="collection">
+                    {this.renderSong()}
+                </ul>
+                <Link
+                    to="/songs/new"
+                    className="btn-floating btn-large red right"
+                >
+                    <i className="material-icons">add</i>
+                </Link>
+
+            </div>
         );
     }
 
     renderSong() {
         return this.props.data.songs.map(song => {
             return (
-                <li id={song.id} className="collection-item">
+                <li key={song.id} className="collection-item">
                     {song.title}
                 </li>
             );
