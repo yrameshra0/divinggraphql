@@ -3,6 +3,7 @@ import {graphql} from 'react-apollo';
 import {Link} from 'react-router';
 
 import songsQuery from '../queries/songs-query';
+import deleteSongMutation from '../mutations/delete-query'
 
 export class SongsList extends Component {
 
@@ -26,15 +27,27 @@ export class SongsList extends Component {
         );
     }
 
+    deleteSong(id) {
+        this.props.mutate({
+            variables: {
+                id
+            },
+            refetchQueries: [{query: songsQuery}]
+        })
+    };
+
     renderSong() {
-        return this.props.data.songs.map(song => {
+        return this.props.data.songs.map(({id, title}) => {
             return (
-                <li key={song.id} className="collection-item">
-                    {song.title}
+                <li key={id} className="collection-item">
+                    {title}
+                    <i onClick={() => this.deleteSong(id)} className="right material-icons">delete</i>
                 </li>
             );
         });
     }
 }
 
-export default graphql(songsQuery)(SongsList);
+export default graphql(deleteSongMutation)(
+    graphql(songsQuery)(SongsList)
+);
